@@ -1,0 +1,90 @@
+{
+  "name": "nestjs-boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "description": "NestJs boilerplate",
+  "license": "UNLICENSED",
+  "author": "archtaqi",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "eslint:check": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "eslint:fix": "yarn eslint:check --fix",
+    "lint": "yarn eslint:check && yarn prettier:check",
+    "precommit": "lint-staged && yarn lint && yarn test",
+    "prepare": "husky install",
+    "prepush": "yarn test",
+    "prettier:check": "prettier --check ./**/*.{ts,js,json,*rc}",
+    "prettier:write": "prettier --write ./**/*.{ts,js,json,*rc}",
+    "check-types": "tsc --pretty --noEmit",
+    "sort-package-json": "npx sort-package-json",
+    "start": "nest start",
+    "start:debug": "nest start --debug --watch",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "src/**/*": [
+      "yarn lint --fix",
+      "yarn test --findRelatedTests --bail"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint"
+    ]
+  },
+  "dependencies": {
+    "@nestjs/common": "9.2.1",
+    "@nestjs/config": "2.2.0",
+    "@nestjs/core": "9.2.1",
+    "@nestjs/platform-express": "9.2.1",
+    "@nestjs/swagger": "6.1.4",
+    "@nestjs/typeorm": "9.0.1",
+    "joi": "17.7.0",
+    "pg": "8.8.0",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "3.0.2",
+    "rxjs": "7.8.0",
+    "typeorm": "0.3.11"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
+    "@nestjs/cli": "9.1.5",
+    "@nestjs/schematics": "9.0.3",
+    "@nestjs/testing": "9.2.1",
+    "@types/express": "4.17.15",
+    "@types/jest": "29.2.5",
+    "@types/node": "18.11.18",
+    "@types/supertest": "2.0.12",
+    "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@typescript-eslint/parser": "5.47.1",
+    "commitizen": "4.2.6",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.31.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "husky": "8.0.2",
+    "jest": "29.3.1",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.1",
+    "supertest": "6.3.3",
+    "ts-jest": "29.0.3",
+    "ts-loader": "9.4.2",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "3.14.1",
+    "typescript": "4.9.4"
+  },
+  "optionalDependencies": {
+    "fsevents": "2.3.2"
+  },
+  "engines": {
+    "node": "^14.17.0 || ^16.10.0 || ^18.0.0",
+    "npm": "^6.14.13 || ^7.5.6 || >=8.0.0",
+    "yarn": ">=1.13.0"
+  }
+}
